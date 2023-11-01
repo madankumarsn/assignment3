@@ -20,12 +20,12 @@ Foundamental Matrix for teddy: <br>
  [-1.85248054e-03  4.53297156e-03  1.00000000e+00]]
 
  * Brief explanation.
-1. Data Preparation: Obtain at least 8 point correspondences between two images.
-2. Normalization: Compute the centroid and the average distance of the points from the centroid for both sets of points. Apply a normalization transformation to both sets of points to move the centroid of the points to the origin and scale the points so that their average distance from the origin
-3. Matrix Construction: Formulate a matrix (A) with each row constructed from a point correspondence
-4. Singular Value Decomposition (SVD): Perform Singular Value Decomposition on matrix (A). Extract the column of (V) corresponding to the smallest singular value, and reshape to get F_hat
-5. Enforce Singularity: Conduct SVD on F_hat. Set the smallest singular value in Sigma to zero, and then calculate the corrected Fundamental Matrix (F)
-6. Denormalization: Denormalize the Fundamental Matrix (F) by applying the inverse of the normalization transformations used in step 2.
+   1. Data Preparation: Obtain at least 8 point correspondences between two images.
+   2. Normalization: Compute the centroid and the average distance of the points from the centroid for both sets of points. Apply a normalization transformation to both sets of points to move the centroid of the points to the origin and scale the points so that their average distance from the origin
+   3. Matrix Construction: Formulate a matrix (A) with each row constructed from a point correspondence
+   4. Singular Value Decomposition (SVD): Perform Singular Value Decomposition on matrix (A). Extract the column of (V) corresponding to the smallest singular value, and reshape to get F_hat
+   5. Enforce Singularity: Conduct SVD on F_hat. Set the smallest singular value in Sigma to zero, and then calculate the corrected Fundamental Matrix (F)
+   6. Denormalization: Denormalize the Fundamental Matrix (F) by applying the inverse of the normalization transformations used in step 2.
 
 
 ### (A2) E matrix using 8-point algorithm (5 points)
@@ -77,24 +77,20 @@ Essential Matrix for teddy: <br>
 
 ## Q3: Triangulation (20 points)
 
-- Colored point cloud:
+* Colored point cloud:
 
 <img src="figs/result.png" width="300"> 
 
-- Brief explanation of implementation.
-1. Skew Matrix Conversion Function: This function converts a set of points to skew-symmetric matrices. It separates the x, y, and z coordinates, and constructs skew-symmetric matrices for each point, returning an array of these matrices.
-2. Triangulation Function: This function performs triangulation to obtain 3D coordinates from corresponding points in two images. It first converts the points pts1 and pts2 to skew-symmetric matrices using the skew function. It computes two sets of constraint matrices by multiplying the skew-symmetric matrices of points with the camera matrices p1 and p2. It then iterates through these constraint matrices, stacking two rows from each, to form a matrix A. Singular Value Decomposition (SVD) is performed on A to obtain the homogeneous coordinates of the 3D point. The 3D point is then converted to inhomogeneous coordinates and added to the list of 3D points.
+* Brief explanation of implementation.
+  1. Skew Matrix Conversion Function: This function converts a set of points to skew-symmetric matrices. It separates the x, y, and z coordinates, and constructs skew-symmetric matrices for each point, returning an array of these matrices.
+  2. Triangulation Function: This function performs triangulation to obtain 3D coordinates from corresponding points in two images. It first converts the points pts1 and pts2 to skew-symmetric matrices using the skew function. It computes two sets of constraint matrices by multiplying the skew-symmetric matrices of points with the camera matrices p1 and p2. It then iterates through these constraint matrices, stacking two rows from each, to form a matrix A. Singular Value Decomposition (SVD) is performed on A to obtain the homogeneous coordinates of the 3D point. The 3D point is then converted to inhomogeneous coordinates and added to the list of 3D points.
 
 
 ## Q4: Reconstruct your own scene! (20 points)
-For this part, you will run an off-the-shelf incremental SfM toolbox such as [COLMAP](https://github.com/colmap/pycolmap) on your own captured multi-view images. Please submit a gif of the reconstructed 3d structure and the location of cameras.
 
-For this reconstruction, you can choose your own data. This data could either be a sequence having rigid objects, any object (for e.g. a mug or a vase in your vicinity), or any scene you wish to reconstruct in 3D.
 
-**Submissions**
 -  Multi-view input images.
 -  A gif to visualize the reconstruction of the scene and location of cameras (extrinsics).
--  Run this on at least 2 sequences / objects / scenes
 
   | Example Multi-view images  | Output | 
   | ----------- | ----------- | 
@@ -102,32 +98,17 @@ For this reconstruction, you can choose your own data. This data could either be
 
 ## Q5: Bonus 1 - Fundamental matrix estimation on your own images. (10 points)
 
-Capture / find at least 2 pairs of images, estimate the fundamental matrix.
-
-**Hint**
-- Use SIFT feature extractor (See the example code below), and compute potential matches.
-```
-import cv2
- 
-# Loading the image
-img = cv2.imread('../data/q1/chair/image_1.jpg')
- 
- # Converting image to grayscale
-gray= cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
- 
-# Applying SIFT detector
-sift = cv2.xfeatures2d.SIFT_create()
-
-kp, des = sift.detectAndCompute(gray, None)
-
-# Compute possible matches in any way you can think of.
-```
-- Use RANSAC with 7-point or 8-point algorithm to get `F`.
-- Show the epipolar lines from the estimated `F`.
-
-**Submission**
-- Brief explanation of your implementation.
 - Epipolar lines.
+  
+- Brief explanation of your implementation.
+  1. SIFT (Scale-Invariant Feature Transform) Object Creation: sift = cv.SIFT_create(). A SIFT object is created using OpenCV's SIFT_create method which will be used for keypoint detection and descriptor computation.
+  2. Grayscale Conversion: gray1 = cv.cvtColor(im1, cv.COLOR_BGR2GRAY). gray2 = cv.cvtColor(im2, cv.COLOR_BGR2GRAY). The input images im1 and im2 are converted to grayscale using OpenCV's cvtColor method, as SIFT operates on grayscale images.
+  3. Keypoint Detection and Descriptor Computation: kp1, des1 = sift.detectAndCompute(gray1, None).  kp2, des2 = sift.detectAndCompute(gray2, None).  The detectAndCompute method of the SIFT object is used to detect keypoints and compute descriptors for both grayscale images.
+  4. Brute-Force Matcher Creation: bf = cv.BFMatcher(cv.NORM_L1, crossCheck=True). A Brute-Force (BF) Matcher object is created using OpenCV's BFMatcher method with L1 norm and cross-check enabled.
+  5. Descriptor Matching: The match method of the BF Matcher object is used to find matches between the descriptors of the two images. The matches are then sorted based on their distance attribute, which represents the similarity between matched descriptors, with lower values indicating better matches.
+  6. Extraction of Matched Points: The matched points' coordinates are extracted using attributes of the match objects. The coordinates are then converted to homogeneous coordinates
+     
+
 
 ## Q6: Bonus 2 - Stress test the hyperparameters of COLMAP (10 points)
 For this part, we want you to `stress test` or play with hyper-parameters in the COLMAP system. We want you to pick `2` interesting questions concerning this toolbox and for each of the question, we want you to provide a brief explanation with supporting qualitative or quantitative evidence. Some example question suggestions are:

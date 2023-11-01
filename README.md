@@ -50,9 +50,9 @@ Essential Matrix for teddy: <br>
 
  * Epipolar lines visualisation <br>
 
-    1. Toy bus <br>
+1. Toy bus <br>
  <img src="figs/q1b_toybus1.png" width="300">  <img src="figs/q1b_toybus2.png" width="300">  <br>
-    2. Toy train <br>
+2. Toy train <br>
  <img src="figs/q1b_toytrain1.png" width="300">  <img src="figs/q1b_toytrain2.png" width="300">  <br>
    
  * Brief explanation of your implementation.

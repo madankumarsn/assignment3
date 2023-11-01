@@ -91,12 +91,11 @@ Essential Matrix for teddy: <br>
    
 
 
-
 ## Q3: Triangulation (20 points)
 
 * Colored point cloud:
 
-<img src="figs/result.png" width="300"> 
+<img src="figs/Figure_1.png" width="300"> 
 
 * Brief explanation of implementation.
   1. Skew Matrix Conversion Function: This function converts a set of points to skew-symmetric matrices. It separates the x, y, and z coordinates, and constructs skew-symmetric matrices for each point, returning an array of these matrices.

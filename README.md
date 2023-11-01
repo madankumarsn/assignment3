@@ -9,7 +9,7 @@
 | -----------  |
 | <img src="figs/epipolar_line_correspondences.jpg" width="700"> |
 
-* Estimated F
+* Estimated F <br>
 Foundamental Matrix for chair: <br>
 [[ 1.25682908e-07  2.04037829e-06 -8.18156810e-04] <br>
  [-3.02922328e-06  2.93471731e-07  1.75381341e-02] <br>
@@ -31,7 +31,7 @@ Foundamental Matrix for teddy: <br>
 
 ### (A2) E matrix using 8-point algorithm (5 points)
 
-* Estimated `E`.
+* Estimated `E`. <br>
 Essential Matrix for chair: <br>
 [[  0.25179337   4.08769758   2.4337315 ] <br>
  [ -6.06875144   0.5879418   35.64846225] <br>
@@ -53,27 +53,28 @@ Essential Matrix for teddy: <br>
 | -----------  |
 | <img src="figs/q1b_7point_data.jpg" width="700"> |
 
+ * Epipolar lines visualisation
+   
  * Brief explanation of your implementation.
- * Epipolar lines: Similar to the above, you need to show lines from fundamental matrix over the two images.
-
+   1. Execution of Seven-Point Algorithm to Compute Fundamental Matrix ( F ): This function implements the Seven-Point Algorithm to compute the Fundamental Matrix ( F ). It normalizes the points, constructs matrix ( A ) from point correspondences, applies Singular Value Decomposition (SVD) to ( A ) to find two matrices ( f1 ) and ( f2 ), and then solves a polynomial equation to find the coefficients that linearly combine ( f1 ) and ( f2 ) to get the possible solutions for ( F ). It returns a list of all possible ( F ) matrices.
+   2. Conversion to Homogeneous Coordinates: The points p1 and p2 are converted to homogeneous coordinates.
+   3. Selection of the Best Fundamental Matrix: Given a list of possible ( F ) matrices, this function selects the one that minimizes the epipolar error by computing the mean epipolar error for each ( F ) and returning the one with the smallest error.
 
 ## Q2: RANSAC with 7-point and 8-point algorithm (20 points)
 
-In some real world applications, manually determining correspondences is infeasible and often there will be noisy coorespondences. Fortunately, the RANSAC method can be applied to the problem of fundamental matrix estimation.
+ * Visualization (graph plot) of % of inliers vs. # of RANSAC iterations for the 7-pt and 8-pt Algorithms in the inner loop of RANSAC.
+ * plot the epipolar lines fundamental matrix calculated over the inliers.
 
-**Data**
+   
+ * Brief explanation of RANSAC implementation and criteria for considering inliers.
+   1. Random Selection of Point Pairs: Randomly select either 7 or 8 pairs of points.
+   2. Temporary Fundamental Matrix Calculation: Compute a temporary Fundamental Matrix (temp_F) using the selected point pairs via either the Eight-Point or Seven-Point Algorithm
+   3. Inlier Counting: Count the number of inliers by identifying the points for which the error is less than a specified error threshold (error_threshold).
+   4. Iteration: Repeat steps 1 to 3 for a specified number of iterations (num_iter) to identify the set of point pairs that yields the maximum number of inliers.
+   5. Final Fundamental Matrix Calculation: Utilize the identified point pairs from the best iteration to compute the final Fundamental Matrix ( F ).
+   
+  
 
-In this question, you will use the image sets released in `q1a` and `q1b` and calculate the `F` matrix using both 7-point and 8-point algorithm with RANSAC. The given correspondences `$object_corresp_raw.npz` consists potential inlier matches. Within each `.npz` file, the fields `pts1` and `pts2` are `N × 2` matrices corresponding to the `(x, y)` coordinates of the N points in the first and second image repectively. 
-
-**Hint**
-- There are around 50-60% of inliers in the provided data.
-- Pick the number of iterations and tolerance of error carefully to get reasonable `F`.
-
-
-**Submission** 
- * Brief explanation of your RANSAC implementation and criteria for considering inliers.
- * Report your best solution and plot the epipolar lines -- show lines from fundamental matrix that you calculate over the inliers.
- * Visualization (graph plot) of % of inliers vs. # of RANSAC iterations (see the example below). You should report such plots for both, the 7-pt and 8-pt Algorithms in the inner loop of RANSAC.
 
  <img src="figs/inlier_ratio.png" width="300"> 
 

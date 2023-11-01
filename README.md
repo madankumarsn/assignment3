@@ -109,9 +109,9 @@ Essential Matrix for teddy: <br>
 -  A gif to visualize the reconstruction of the scene and location of cameras (extrinsics).
 
   1. Example 1 <br>
- <img src="figs/90.jpg" width="50">  <img src="figs/120.jpg" width="50"> <img src="figs/150.jpg" width="50">  <img src="figs/180.jpg" width="50"> <img src="figs/240.jpg" width="50">  <img src="figs/270.jpg" width="50">  <br>
+ <img src="figs/90.jpg" width="100">  <img src="figs/120.jpg" width="100"> <img src="figs/150.jpg" width="100">  <img src="figs/180.jpg" width="100"> <img src="figs/240.jpg" width="100">  <img src="figs/270.jpg" width="100">  <br>
   2. Example 2 <br>
- <img src="figs/90.jpg" width="540">  <img src="figs/120.jpg" width="650"> <img src="figs/150.jpg" width="680">  <img src="figs/710.jpg" width="50"> <img src="figs/770.jpg" width="50">  <img src="figs/810.jpg" width="50"> <br>
+ <img src="figs/540.jpg" width="100">  <img src="figs/650.jpg" width="100"> <img src="figs/680.jpg" width="100">  <img src="figs/710.jpg" width="100"> <img src="figs/770.jpg" width="100">  <img src="figs/810.jpg" width="100"> <br>
 
 ## Q5: Bonus 1 - Fundamental matrix estimation on your own images. (10 points)
 

@@ -6,9 +6,9 @@
 
  * Epipolar lines: <br>
  1. Chair <br>
- <img src="figs/q1a_chair1.png" width="200">  <img src="figs/q1a_chair2.png" width="200">  <br>
+ <img src="figs/q1a_chair1.png" width="300">  <img src="figs/q1a_chair2.png" width="300">  <br>
  2. Teddy <br>
- <img src="figs/q1a_teddy1.png" width="300">  <img src="figs/q1a_teddy2.png" width="300">  <br>
+ <img src="figs/q1a_teddy1.png" width="400">  <img src="figs/q1a_teddy2.png" width="400">  <br>
 
 * Estimated F <br>
 Foundamental Matrix for chair: <br>

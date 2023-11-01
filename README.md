@@ -5,9 +5,7 @@
 ### (A1) F matrix using 8-point algorithm (15 points)
 
  * Epipolar lines: 
-| view 1       | view 2       | <br>
-| -----------  | -----------  | <br>
-| <img src="figs/q1a_chair1.png" width="200"> | <img src="figs/q1a_chair2.png" width="200"> | <br>
+ <img src="figs/q1a_chair1.png" width="200">  <img src="figs/q1a_chair2.png" width="200">  <br>
 
 * Estimated F <br>
 Foundamental Matrix for chair: <br>

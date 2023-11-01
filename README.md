@@ -6,8 +6,8 @@
 
  * Epipolar lines: 
 | F-matrix visualizations |
-| -----------  |
-| <img src="figs/epipolar_line_correspondences.jpg" width="700"> |
+| -----------  | -----------  | 
+| <img src="figs/q1a_chair1.png" width="700"> | <img src="figs/q1a_chair2.png" width="700"> |
 
 * Estimated F <br>
 Foundamental Matrix for chair: <br>

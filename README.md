@@ -11,7 +11,7 @@
 | -----------  |
 | <img src="figs/epipolar_line_correspondences.jpg" width="700"> |
 
-Foundamental Matrix for chair:
+'''Foundamental Matrix for chair:
 |[[ 1.25682908e-07  2.04037829e-06 -8.18156810e-04]|
 | [-3.02922328e-06  2.93471731e-07  1.75381341e-02]|
 | [-3.68943624e-05 -1.78325507e-02  1.00000000e+00]]|

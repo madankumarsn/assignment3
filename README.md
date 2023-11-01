@@ -5,12 +5,24 @@
 ### (A1) F matrix using 8-point algorithm (15 points)
 
 **Submission** 
- * Brief explanation of your implementation.
- * Epipolar lines: Show lines from fundamental matrix over the two images. See the following example figure:
 
+ * Epipolar lines: 
 | F-matrix visualizations |
 | -----------  |
 | <img src="figs/epipolar_line_correspondences.jpg" width="700"> |
+
+Foundamental Matrix for chair:
+[[ 1.25682908e-07  2.04037829e-06 -8.18156810e-04]
+ [-3.02922328e-06  2.93471731e-07  1.75381341e-02]
+ [-3.68943624e-05 -1.78325507e-02  1.00000000e+00]]
+
+ * Brief explanation of your implementation.
+1. Data Preparation: Obtain at least 8 point correspondences between two images.
+2. Normalization: Compute the centroid and the average distance of the points from the centroid for both sets of points. Apply a normalization transformation to both sets of points to move the centroid of the points to the origin and scale the points so that their average distance from the origin
+3. Matrix Construction: Formulate a matrix (A) with each row constructed from a point correspondence
+4. Singular Value Decomposition (SVD): Perform Singular Value Decomposition on matrix (A). Extract the column of (V) corresponding to the smallest singular value, and reshape to get F_hat
+5. Enforce Singularity: Conduct SVD on F_hat. Set the smallest singular value in Sigma to zero, and then calculate the corrected Fundamental Matrix (F)
+6. Denormalization: Denormalize the Fundamental Matrix (F) by applying the inverse of the normalization transformations used in step 2.
 
 
 ### (A2) E matrix using 8-point algorithm (5 points)

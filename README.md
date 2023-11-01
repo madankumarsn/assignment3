@@ -1,26 +1,8 @@
 # HW3: 3D reconstruction
 
-## Instructions
-* Late Submission Policy: See the late submission policy [here](https://geometric3d.github.io/pages/assignments/hw0.html).
-* Submitting your work: Check the instructions for submission [here](https://geometric3d.github.io/pages/assignments/hw0.html).
-* There are `6` questions in this assignment, where the last two are bonus questions. Make sure you follow the instructions and submit the answers as required.
-
-## Overview
-
-In this assignment you will begin by implementing the methods to estimate the fundamental matrix from corresponding points in two images. Next, given the fundamental matrix and calibrated intrinsics (which will be provided) you will compute the essential matrix. Next, you will implement RANSAC to improve your algorithm and use this to compute a 3D metric reconstruction from 2D correspondences using triangulation. 
-
-
 ## Q1: 8-point and 7-point algorithm (40 points)
 
 ### (A1) F matrix using 8-point algorithm (15 points)
-
-Given two images from the [Co3D dataset](https://ai.facebook.com/datasets/CO3D-dataset/), you need to implement the 8-point algorithm for estimating the fundamental matrix. 
-
-**Data**
-
-We provide 2 sets of two-view images along with the corresponding points in the two images as a `$object_corresp_raw.npz` file. Within each `.npz` file, the fields `pts1` and `pts2` are `N × 2` matrices corresponding to the `(x, y)` coordinates of the N points in the first and second image repectively. You can use >= 8 corresponding points (with better solutions given more constraints).
-
- * Run your code on the 2 sets of `2` images provided in the `data/q1a` folder for this question.
 
 **Submission** 
  * Brief explanation of your implementation.

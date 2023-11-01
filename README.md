@@ -4,19 +4,23 @@
 
 ### (A1) F matrix using 8-point algorithm (15 points)
 
-**Submission** 
-
  * Epipolar lines: 
 | F-matrix visualizations |
 | -----------  |
 | <img src="figs/epipolar_line_correspondences.jpg" width="700"> |
 
+* Estimated F
 Foundamental Matrix for chair: <br>
 [[ 1.25682908e-07  2.04037829e-06 -8.18156810e-04] <br>
  [-3.02922328e-06  2.93471731e-07  1.75381341e-02] <br>
  [-3.68943624e-05 -1.78325507e-02  1.00000000e+00]]
 
- * Brief explanation of your implementation.
+Foundamental Matrix for teddy: <br>
+[[ 1.27285868e-07 -4.57717559e-08  6.67579893e-04] <br>
+ [-4.96411756e-07 -3.13172765e-07 -3.96609523e-03] <br>
+ [-1.85248054e-03  4.53297156e-03  1.00000000e+00]]
+
+ * Brief explanation.
 1. Data Preparation: Obtain at least 8 point correspondences between two images.
 2. Normalization: Compute the centroid and the average distance of the points from the centroid for both sets of points. Apply a normalization transformation to both sets of points to move the centroid of the points to the origin and scale the points so that their average distance from the origin
 3. Matrix Construction: Formulate a matrix (A) with each row constructed from a point correspondence
@@ -27,34 +31,28 @@ Foundamental Matrix for chair: <br>
 
 ### (A2) E matrix using 8-point algorithm (5 points)
 
-Given the estimated fundamental matrix `F` (from above) and intrinsic matrices `K1` and `K2` (that we provide as `intrinsic_matrices_$object.npz`), you need to compute the essential matrix `E`.
+* Estimated `E`.
+Essential Matrix for chair: <br>
+[[  0.25179337   4.08769758   2.4337315 ] <br>
+ [ -6.06875144   0.5879418   35.64846225] <br>
+ [ -6.06626294 -35.81023687   1.        ]]
 
-**Submission** 
- * Brief explanation of your implementation.
- * Provide your estimated `E`.
-
+Essential Matrix for teddy: <br>
+[[  -5.36975574    1.93095394  -31.7198445 ] <br>
+ [  20.9419153    13.21168858  185.53695326] <br>
+ [  77.11314674 -180.20769233    1.        ]]
+ 
+* Brief explanation.
+  1. Computing the Fundamental Matrix ( F ) using the Eight-Point Algorithm: Initially, the points are converted to homogeneous coordinates. The points are then normalized. A matrix ( A ) is constructed from the point correspondences. Singular Value Decomposition (SVD) is applied to ( A ) to find ( F ). The singularity constraint is enforced on ( F ). Finally, ( F ) is un-normalized.
+  2. Computing the Essential Matrix ( E ) from the Fundamental Matrix ( F ) and the intrinsic matrices ( K_1 ) and ( K_2 ): The formula ( E = K2^T. F. K1 ) is used to compute ( E ) from ( F ), ( K1 ), and ( K2 ). ( E ) is then normalized by dividing it by the element in the last row and last column of ( E ).
+  3. Conversion of 2D coordinates to homogeneous coordinates: A set of 2D coordinates is converted to homogeneous coordinates by appending a 1 to each point.
 
 ### (B) 7-point algorithm (20 points)
-
-Since the fundamental matrix only has 7 degrees of freedom, it is possible to calculate `F` using only 7 point correspondences. This requires solving a polynomial equation. In this question, you will implement the 7-point algorithm.
-
-**Data**
-
-We provide `$object_7_point_corresp.npz` that consists of 7 precise correspondences (shown below) for you to run 7-point algorithm. 
 
 | 7-point correspondence visualization  |
 | -----------  |
 | <img src="figs/q1b_7point_data.jpg" width="700"> |
 
-
- * Run your code on the 2 sets of `2` images provided in the `data/q1b` folder for this question.
-
-**Hint**
-
-There are probably multiple solutions from the 7-point algorithm. You need to choose the correct one manually or in whatever way you want. (E.g. Hint 1: what should the epipolar lines on these images look like? Hint 2: pick some extra correspondences to check whether the estimated `F` is correct.)
-
-
-**Submission** 
  * Brief explanation of your implementation.
  * Epipolar lines: Similar to the above, you need to show lines from fundamental matrix over the two images.
 

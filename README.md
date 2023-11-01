@@ -65,17 +65,21 @@ Essential Matrix for teddy: <br>
  * Visualization (graph plot) of % of inliers vs. # of RANSAC iterations for the 7-pt and 8-pt Algorithms in the inner loop of RANSAC.
  * plot the epipolar lines fundamental matrix calculated over the inliers.
 
- 1. Chair <br>
+ 1. Chair-8 point <br>
  <img src="figs/q2_chair_inliner_8point_algo.png" width="300">  <img src="figs/q2_chair1_8.png" width="300"> <img src="figs/q2_chair2_8.png" width="300"> <br>
+ 2. Chair-7 point <br>
  <img src="figs/q2_chair_inliner_7point_algo.png" width="300">  <img src="figs/q2_chair1_7.png" width="300"> <img src="figs/q2_chair2_7.png" width="300"> <br>
- 2. Teddy <br>
+ 3. Teddy-8 point <br>
  <img src="figs/q2_teddy_inliner_8point_algo.png" width="300">  <img src="figs/q2_teddy1_8.png" width="300"> <img src="figs/q2_teddy2_8.png" width="300"> <br>
+ 4. Teddy-7 point <br>
  <img src="figs/q2_teddy_inliner_7point_algo.png" width="300">  <img src="figs/q2_teddy1_7.png" width="300"> <img src="figs/q2_teddy2_7.png" width="300"> <br>
- 3. Toy bus <br>
+ 5. Toy bus-8 point <br>
  <img src="figs/q2_toybus_inliner_8point_algo.png" width="300">  <img src="figs/q2_toybus1_8.png" width="300"> <img src="figs/q2_toybus2_8.png" width="300"> <br>
+ 6. Toy bus-7 point <br>
  <img src="figs/q2_toybus_inliner_7point_algo.png" width="300">  <img src="figs/q2_toybus1_7.png" width="300"> <img src="figs/q2_toybus2_7.png" width="300"> <br>
- 4. Toy train <br>
+ 7. Toy train-8 point <br>
  <img src="figs/q2_toytrain_inliner_8point_algo.png" width="300">  <img src="figs/q2_toytrain1_8.png" width="300"> <img src="figs/q2_toytrain2_8.png" width="300"> <br>
+ 8. Toy train-7 point <br>
  <img src="figs/q2_toytrain_inliner_7point_algo.png" width="300">  <img src="figs/q2_toytrain1_7.png" width="300"> <img src="figs/q2_toytrain2_7.png" width="300"> <br>
    
  * Brief explanation of RANSAC implementation and criteria for considering inliers.

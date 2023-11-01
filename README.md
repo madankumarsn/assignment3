@@ -13,8 +13,7 @@
 Foundamental Matrix for chair: <br>
 [[ 1.25682908e-07  2.04037829e-06 -8.18156810e-04] <br>
  [-3.02922328e-06  2.93471731e-07  1.75381341e-02] <br>
- [-3.68943624e-05 -1.78325507e-02  1.00000000e+00]]
-
+ [-3.68943624e-05 -1.78325507e-02  1.00000000e+00]] <br>
 Foundamental Matrix for teddy: <br>
 [[ 1.27285868e-07 -4.57717559e-08  6.67579893e-04] <br>
  [-4.96411756e-07 -3.13172765e-07 -3.96609523e-03] <br>
@@ -35,8 +34,7 @@ Foundamental Matrix for teddy: <br>
 Essential Matrix for chair: <br>
 [[  0.25179337   4.08769758   2.4337315 ] <br>
  [ -6.06875144   0.5879418   35.64846225] <br>
- [ -6.06626294 -35.81023687   1.        ]]
-
+ [ -6.06626294 -35.81023687   1.        ]] <br>
 Essential Matrix for teddy: <br>
 [[  -5.36975574    1.93095394  -31.7198445 ] <br>
  [  20.9419153    13.21168858  185.53695326] <br>
@@ -65,6 +63,7 @@ Essential Matrix for teddy: <br>
  * Visualization (graph plot) of % of inliers vs. # of RANSAC iterations for the 7-pt and 8-pt Algorithms in the inner loop of RANSAC.
  * plot the epipolar lines fundamental matrix calculated over the inliers.
 
+ <img src="figs/inlier_ratio.png" width="300"> 
    
  * Brief explanation of RANSAC implementation and criteria for considering inliers.
    1. Random Selection of Point Pairs: Randomly select either 7 or 8 pairs of points.
@@ -73,28 +72,19 @@ Essential Matrix for teddy: <br>
    4. Iteration: Repeat steps 1 to 3 for a specified number of iterations (num_iter) to identify the set of point pairs that yields the maximum number of inliers.
    5. Final Fundamental Matrix Calculation: Utilize the identified point pairs from the best iteration to compute the final Fundamental Matrix ( F ).
    
-  
 
-
- <img src="figs/inlier_ratio.png" width="300"> 
 
 
 ## Q3: Triangulation (20 points)
 
-Given 2D correspondences and 2 camera matrices, your goal is to triangulate the 3D points. 
-
-**Data**
-- We provide the 2 images: `data/q3/img1.jpg` and `data/q3/img2.jpg`. 
-- We provide the 2 camera matrices in `data/q3/P1.npy` and `data/q3/P2.npy`, both of which are `3x4` matrices.
-- We provide 2D correspondences in `data/q3/pts1.npy` and `data/q3/pts2.npy`, where `pts1` and `pts2` are `Nx2` matrices. Below is a visualization of the correspondences:
-
-<img src="figs/corresp.png" width="400"> 
-
-**Submission**
-- Brief explanation of your implementation.
-- A colored point cloud as below:
+- Colored point cloud:
 
 <img src="figs/result.png" width="300"> 
+
+- Brief explanation of implementation.
+1. Skew Matrix Conversion Function: This function converts a set of points to skew-symmetric matrices. It separates the x, y, and z coordinates, and constructs skew-symmetric matrices for each point, returning an array of these matrices.
+2. Triangulation Function: This function performs triangulation to obtain 3D coordinates from corresponding points in two images. It first converts the points pts1 and pts2 to skew-symmetric matrices using the skew function. It computes two sets of constraint matrices by multiplying the skew-symmetric matrices of points with the camera matrices p1 and p2. It then iterates through these constraint matrices, stacking two rows from each, to form a matrix A. Singular Value Decomposition (SVD) is performed on A to obtain the homogeneous coordinates of the 3D point. The 3D point is then converted to inhomogeneous coordinates and added to the list of 3D points.
+
 
 ## Q4: Reconstruct your own scene! (20 points)
 For this part, you will run an off-the-shelf incremental SfM toolbox such as [COLMAP](https://github.com/colmap/pycolmap) on your own captured multi-view images. Please submit a gif of the reconstructed 3d structure and the location of cameras.

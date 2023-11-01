@@ -115,6 +115,10 @@ Essential Matrix for teddy: <br>
 ## Q5: Bonus 1 - Fundamental matrix estimation on your own images. (10 points)
 
 - Epipolar lines.
+  1. Example 1 <br>
+ <img src="figs/q5_kit1_8.png" width="300">  <img src="figs/q5_kit2_8.png" width="300"> <br>
+  2. Example 2 <br>
+ <img src="figs/q5_mc1_8.png" width="300">  <img src="figs/q5_mc2_8.png" width="300"> <br>
   
 - Brief explanation of your implementation.
   1. SIFT (Scale-Invariant Feature Transform) Object Creation: sift = cv.SIFT_create(). A SIFT object is created using OpenCV's SIFT_create method which will be used for keypoint detection and descriptor computation.

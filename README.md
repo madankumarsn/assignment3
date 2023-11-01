@@ -48,11 +48,12 @@ Essential Matrix for teddy: <br>
 
 ### (B) 7-point algorithm (20 points)
 
-| 7-point correspondence visualization  |
-| -----------  |
-| <img src="figs/q1b_7point_data.jpg" width="700"> |
+ * Epipolar lines visualisation <br>
 
- * Epipolar lines visualisation
+    1. Toy bus <br>
+ <img src="figs/q1b_toybus1.png" width="300">  <img src="figs/q1b_toybus2.png" width="300">  <br>
+    2. Toy train <br>
+ <img src="figs/q1b_toytrain1.png" width="300">  <img src="figs/q1b_toytrain2.png" width="300">  <br>
    
  * Brief explanation of your implementation.
    1. Execution of Seven-Point Algorithm to Compute Fundamental Matrix ( F ): This function implements the Seven-Point Algorithm to compute the Fundamental Matrix ( F ). It normalizes the points, constructs matrix ( A ) from point correspondences, applies Singular Value Decomposition (SVD) to ( A ) to find two matrices ( f1 ) and ( f2 ), and then solves a polynomial equation to find the coefficients that linearly combine ( f1 ) and ( f2 ) to get the possible solutions for ( F ). It returns a list of all possible ( F ) matrices.

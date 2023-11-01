@@ -108,9 +108,10 @@ Essential Matrix for teddy: <br>
 -  Multi-view input images.
 -  A gif to visualize the reconstruction of the scene and location of cameras (extrinsics).
 
-  | Example Multi-view images  | Output | 
-  | ----------- | ----------- | 
-  |  <img src="figs/multi-sacre-cour.jpg" width="400">  | <img src="figs/monument_reconstruction.gif" width="400"> |  
+  1. Example 1 <br>
+ <img src="figs/q5_kit1_8.png" width="300">  <img src="figs/q5_kit2_8.png" width="300"> <br>
+  2. Example 2 <br>
+ <img src="figs/q5_mc1_8.png" width="300">  <img src="figs/q5_mc2_8.png" width="300"> <br>
 
 ## Q5: Bonus 1 - Fundamental matrix estimation on your own images. (10 points)
 
@@ -128,30 +129,3 @@ Essential Matrix for teddy: <br>
   5. Descriptor Matching: The match method of the BF Matcher object is used to find matches between the descriptors of the two images. The matches are then sorted based on their distance attribute, which represents the similarity between matched descriptors, with lower values indicating better matches.
   6. Extraction of Matched Points: The matched points' coordinates are extracted using attributes of the match objects. The coordinates are then converted to homogeneous coordinates
      
-
-
-## Q6: Bonus 2 - Stress test the hyperparameters of COLMAP (10 points)
-For this part, we want you to `stress test` or play with hyper-parameters in the COLMAP system. We want you to pick `2` interesting questions concerning this toolbox and for each of the question, we want you to provide a brief explanation with supporting qualitative or quantitative evidence. Some example question suggestions are:
-
--  What happens if we reduce number of input images?
--  Under what scenario and conditions does the reconstruction pipeline breaks?
--  What happens if we play with some tolerance parameters?
-
-Above mentioned are just suggestions for you to play around the toolbox. Feel free to try anything you think could be interesting, and report back the findings.
-
-
-**Submissions**
--  `2` questions and supporting explanations.
-
-
-## What you can *not* do
-* Download any code.
-* Use any predefined routines except linear algebra functions.
-  
-## Tips
-* It is a good idea to `assert` with sanity checks regularly during debugging.
-* Normalize point and line coordinates.
-* Remember that transformations are estimated up to scale, and that you are dealing with Projective Geometry.
-* You *may not* use predefined routine to directly compute homography (e.g. `cv2.findHomography`). However, you *may* use predefined linear algebra/image interpolation libraries (e.g. `np.linalg`, `cv2.warpPerspective`). If you are unsure about what may or may not be used, don't hesitate to ask on Piazza.
-
-* **Start Early and Have Fun!**
